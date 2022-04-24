@@ -4,12 +4,11 @@ import json
 import re
 
 # Connect to API and get json response
-url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php'
-cards = requests.get(url=url)
-cards_json = cards.json()['data']
+response = requests.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+response_json = response.json()['data']
 
 # Make dataframe from json response
-cards_df = pd.DataFrame(cards_json)
+cards_df = pd.DataFrame(response_json)
 # Column of card names
 cards_names = cards_df['name']
 
